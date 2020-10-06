@@ -33,11 +33,16 @@ function startTimer(){
 function tick(){
     timeElapsed++;
     console.log(timeElapsed)
-    if(timeElapsed>timeLeft){
+    if(timeElapsed+1>timeLeft){
         clearInterval(timer);
     }
+    updateTimer();
 }
 
+function updateTimer(){
+    var currentTime = timeLeft - timeElapsed
+    timeEl.textContent = currentTime;
+}
 
 //buttons
 startButton.addEventListener("click", startGame);
