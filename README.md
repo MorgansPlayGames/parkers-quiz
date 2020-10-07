@@ -43,3 +43,14 @@ psudocode:
     **Scoring System
     **Penalty system
     **Score Saving System
+
+
+    html:
+    made base layout for system.
+    updated the "answers" id to "choices" .
+
+    JS
+    start button done
+    timer done
+    start button connected to timer done
+    choice buttons done
