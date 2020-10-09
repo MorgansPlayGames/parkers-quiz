@@ -12,9 +12,13 @@ var aBox4 = document.getElementById("aBox4");
 var aBoxEl = document.getElementById("choices");
 var timeEl = document.getElementById("hBox2");
 var scoreEl = document.getElementById("hBox3");
+qBox.style.display = "none";
+aBoxEl.style.display = "none";
+timeEl.style.display = "none";
+scoreEl.style.display = "none";
 
 //timer
-var timeLeft = 5;
+var timeLeft = 60;
 var timeElapsed;
 var timer;
 
@@ -29,20 +33,25 @@ var questionList = [];
 //Start function
 function startGame(){
     console.log("Hello!");
+    qBox.style.display = "block";
+    aBoxEl.style.display = "block";
+    timeEl.style.display = "block";
+    scoreEl.style.display = "block";
+
     startTimer();
     points = 0;
     initializeQuestions()
-
+    questionIndex = 0;
+    newQuestion();
+    timeElapsed = 0;
+    startButton.style.display = "none";
+    
 }
 
 //timer Functions
 function startTimer(){
     timer = setInterval(tick, 1000);
-    timeElapsed = 0;
-    initializeQuestions();
-    questionIndex = 0;
-    newQuestion();
-    
+    updateTimer();
 }
 
 //every second do this
@@ -51,12 +60,12 @@ function tick(){
     //console.log(timeElapsed)
     //end timer
     if(timeElapsed+1>timeLeft){
-        clearInterval(timer);
+        endGame();
     }
     updateTimer();
 }
 
-//change the time left
+//change the time left on screen
 function updateTimer(){
     var currentTime = timeLeft - timeElapsed
     timeEl.textContent = currentTime;
@@ -72,17 +81,23 @@ function submitAnswer(choice){
     }else{
         //do something on incorrect
         console.log("incorrect");
+        timeElapsed += 5;
+        updateTimer();
     }
     console.log("points " + points);
     scoreEl.textContent = "Score: " + points;
     newQuestion();
 }
 
-//array of questions to put into questionList
+//array of questions to put into questionList and shuffle them.
 function initializeQuestions(){
     questionList[0] = ["What is my name?", "Parker", "Joel", "Matthew", "Jimmothy"];
     questionList[1] = ["A string is a:", "Series of characters", "Function that goes to another function", "A cat toy", "good album"];
     questionList[2] = ["The answer is 'C'", "C", "A", "B", "D"];
+    questionList[3] = ["What is your response to World of Warcraft?", "For the Horde!", "For the Alliance...", "What is World of Warcraft?", "I play League of Legends"];
+    questionList[4] = ["Metal (genre) is:", "A diverse genre of music", "just nonesense screaming", "a bad thing", "for scary people"]
+    questionList[5] = ["The most popular pokemon is:", "Pikachu", "Mewtwo", "Jigglypuff", "Missingno"];
+    
     shuffle(questionList);
 }
 
@@ -118,6 +133,11 @@ function newQuestion(){
 //On game end do this
 function endGame(){
     console.log("good job");
+    startButton.style.display = "block";
+    qBox.style.display = "none";
+    aBoxEl.style.display = "none";
+    clearInterval(timer);
+
 }
 
 
