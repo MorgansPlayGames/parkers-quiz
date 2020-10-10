@@ -54,3 +54,13 @@ psudocode:
     timer done
     start button connected to timer done
     choice buttons done
+    question/answer embeded array added
+    new question upon start with answers attached to choice buttons
+    scrambler/shuffler added
+    question list scrambled upon iniation
+    answers scrambled upon calling a new question with right answer saved.
+    score number added correct answer 5 points
+    total score is time left + score
+    added save button
+    save button saves the initials through a prompt
+    
