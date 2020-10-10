@@ -15,34 +15,34 @@
 </head>
 <body>
     <!-- Body where everything is happening -->
-    <header class = "container border">
-        <div class = row>
-            <h2 class = "mx-auto">Parker's Quiz!</h2>
+    <header class = "container border bg-primary rounded-bottom text-white">
+        <div class = "row">
+            <h2 class = "mx-auto display-3">Parker's Quiz!</h2>
         </div>
         <div class = row>
-            <div class="col-sm-4" href id="hBox1"><a href='high-score.html'>High Scores Page!</a></div>
+            <div class="col-sm-4" href id="hBox1"><a href='high-score.html' class = "mx-auto text-white">High Scores Page!</a></div>
             <div class="col-sm-4 mx-auto" id="hBox2">Timer</div>
             <div class="col-sm-4 mx-auto" id="hBox3">Score</div>
         </div>
     </header>
     <main class="container" id="mainContent">
 
-        <button type="button" id="startButton">Start Quiz</button>
-        <button type="button" id="saveScore">Save Your Score</button>
+        <button type="button" class="btn btn-info btn-lg btn-block" id="startButton">Start Quiz</button>
+        <button type="button" class="btn btn-info btn-lg btn-block" id="saveScore">Save Your Score</button>
         <!-- Question section -->
         <header class = "row jumbotron" id="question">Question</header>
-        <div id="choices" class = "container">
+        <div id="choices" class = "container justify-content-center">
             <div class = "row">
                 <!-- Answer 1 -->
-                <section class="col-sm-6 card" id="aBox1">Answer 1</section>
+                <button class="col-6 btn btn-info m-1" id="aBox1">Answer 1</section>
                 <!-- Answer 2 -->
-                <section class="col-sm-6 card" id="aBox2">Answer 2</section>
+                <button class="col-6 btn btn-info m-1" id="aBox2">Answer 2</section>
             </div>
             <div class = "row">
                 <!-- Answer 3 -->
-                <section class="col-sm-6 card" id="aBox3">Answer 3</section>
+                <button class="col-6 btn btn-info m-1" id="aBox3">Answer 3</section>
                 <!-- Answer 4 -->
-                <section class="col-sm-6 card" id="aBox4">Answer 4</section>
+                <button class="col-6 btn btn-info m-1" id="aBox4">Answer 4</section>
             </div>
         </div>
     </main>

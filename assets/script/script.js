@@ -2,8 +2,6 @@
 var startButton = document.querySelector("#startButton");
 
 //All boxes that need modification
-    //mainContent not needed?
-var content = document.getElementById("mainContent")
 var qBox = document.getElementById("question");
 var aBox1 = document.getElementById("aBox1");
 var aBox2 = document.getElementById("aBox2");
@@ -35,7 +33,6 @@ var scoreTotal;
 
 //Start function
 function startGame(){
-    //console.log("Hello!");
     qBox.style.display = "block";
     aBoxEl.style.display = "block";
     timeEl.style.display = "block";
@@ -44,7 +41,7 @@ function startGame(){
 
     startTimer();
     points = 0;
-    initializeQuestions()
+    initializeQuestions();
     questionIndex = 0;
     newQuestion();
     timeElapsed = 0;
@@ -60,7 +57,6 @@ function startTimer(){
 //every second do this
 function tick(){
     timeElapsed++;
-    //console.log(timeElapsed)
     //end timer
     if(timeElapsed+1>timeLeft){
         endGame();
@@ -76,18 +72,14 @@ function updateTimer(){
 
 //On click to answer boxes, do something
 function submitAnswer(choice){
-    //console.log(choice);
     //if choice is correct give 5 points
     if(choice === correctAnswer){
-        //console.log("correct");
         points = points + 5;
     }else{
         //do something on incorrect
-        //console.log("incorrect");
         timeElapsed += 5;
         updateTimer();
     }
-    //console.log("points " + points);
     scoreEl.textContent = "Score: " + points;
     newQuestion();
 }
@@ -135,7 +127,6 @@ function newQuestion(){
 
 //On game end do this
 function endGame(){
-    //console.log("good job");
     startButton.style.display = "block";
     qBox.style.display = "none";
     aBoxEl.style.display = "none";
@@ -147,8 +138,6 @@ function endGame(){
 function getScore(){
     var timeTotal = timeLeft - timeElapsed;
     scoreTotal = points + timeLeft - timeElapsed;
-    //console.log(timeTotal);
-    //console.log(scoreTotal);
     scoreEl.textContent = "Total Score: " + scoreTotal;
     timeEl.style.display = "none";
     scoreBtn.style.display = "block";
@@ -156,8 +145,6 @@ function getScore(){
 
 function saveScore(){
     var HSInitials = prompt("Enter your initials:");
-    //console.log(HSInitials);
-    //console.log(scoreTotal);
 
     //Do nothing if canceled or none
     if(HSInitials === "" || HSInitials === null){
@@ -165,33 +152,34 @@ function saveScore(){
     }
     //hide score button on a correct submit
     scoreBtn.style.display = "none";
+
     //Way to store my list of arrays
     var HSScoreInit = {
         name : HSInitials,
         score : scoreTotal
     };
-    //console.log(HSScoreInit);
 
     var HSList = localStorage.getItem("scoreList");
 
-    //console.log(HSList);
     //if none in storage set up storage
     if(HSList === null){
         HSList = [HSScoreInit];
-        //console.log(HSList);
-        localStorage.setItem('scoreList', JSON.stringify(HSList));
-
-       
     }else{  //Get high score list and add the users score
         HSList = JSON.parse(HSList);
-        //console.log(HSList);
+        //add the latest score
         HSList.push(HSScoreInit);
-        console.log(HSList);
-        localStorage.setItem('scoreList', JSON.stringify(HSList));
+        //sort list by highest score
+        HSList.sort(compare)
     }
-
+    //set score list to local storage
+    localStorage.setItem('scoreList', JSON.stringify(HSList));
 }
-
+//Sort the list by high score
+function compare(a, b){
+    if(a.score > b.score) return -1;
+    if(a.score < b.score) return 1;
+    return 0;
+}
 //Shuffle function found to add randomness
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -221,7 +209,6 @@ scoreBtn.addEventListener('click', saveScore)
 //button that gets choice
 aBoxEl.addEventListener('click', function(event){
     var choice = event.target.getAttribute('id');
-    //console.log(choice);
     if(choice === "aBox1"){
         submitAnswer(1);
     }
