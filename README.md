@@ -1,3 +1,9 @@
+
+
+
+![image](Screenshot.png)
+
+
 # parkers-quiz
 A quiz game to help study coding terminology
 
@@ -26,23 +32,37 @@ WHEN the game is over
 THEN I can save my initials and score
 ```
 
-psudocode:
+## psudocode:
 
-**Start Button
-**Timer
-**Question Game
-    **General Layout
-        **Questions need to fit a designated area centered
-        **Answers need to fit in the areas underneath questions in a two by two area
-        **Timer centered above
-        **Score to the top right
-    **Question Generated with one correct answer
-    **Button's for answers
-    **Randomized questions from list
-    **Randomized placement for answers
-    **Scoring System
-    **Penalty system
-    **Score Saving System
+Start Button
+
+Timer
+
+Question Game
+
+General Layout:
+
+Questions need to fit a designated area centered
+
+Answers need to fit in the areas underneath questions in a two by two area
+
+Timer centered above
+
+Score to the top right
+
+Question Generated with one correct answer
+
+Button's for answers
+
+Randomized questions from list
+
+Randomized placement for answers
+
+Scoring System
+
+Penalty system
+
+Score Saving System
 
 
     html:
